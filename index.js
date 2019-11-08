@@ -10,6 +10,7 @@ app.use(bodyParser.json())
 var database, collection;
 
 app.get('/', (req, res, next) => {
+    res.status(200)
     res.json({ message: 'Welcome to our app :)'});
   });
 
@@ -21,12 +22,14 @@ app.post('/users', (req,res) =>{
         }
 
         if(result){
+            res.status(400)
             res.json({ message: 'A user has been created with that number'});
         }else{
             collection.insertOne(req.body, (err, result) => {
                 if(err) {
                     return res.status(500).send(error);
                 }
+                res.status(201)
                 res.json({message:'A new user has been created', user: result.ops});
             });
         }
@@ -38,6 +41,7 @@ app.get('/users', (req,res) =>{
         if(error) {
             return response.status(500).send(error);
         }
+        res.status(200)
         res.json({message:'A list of all users', users: result});
     });
 });
