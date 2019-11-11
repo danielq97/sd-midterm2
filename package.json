@@ -4,7 +4,7 @@
   "description": "Distributed Systems Midterm 2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -t 5000"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,13 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.3",
-    "mongoose": "^5.7.8"
+    "mongoose": "^5.7.8",
+    "superagent": "^5.1.0",
+    "superagent-promise": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "http-status-codes": "^1.4.0",
+    "mocha": "^6.2.2"
   }
 }
