@@ -7,3 +7,5 @@ email: false
 branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
+script:
+  - npm start &
