@@ -4,7 +4,8 @@
   "description": "Distributed Systems Midterm 2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -t 5000"
+    "test": "mocha -t 5000",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/mishale22/sd-midterm2#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.3",

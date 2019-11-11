@@ -59,3 +59,5 @@ app.listen(4000, function () {
         console.log("Connected to `" + database + "`!");
     });
 });
+
+module.exports = app; 
