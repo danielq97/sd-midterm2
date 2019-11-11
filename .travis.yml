@@ -8,4 +8,5 @@ branches:
 except:
 - "/^v\\d+\\.\\d+\\.\\d+$/"
 script:
-  - npm start &
+  - node index.js &
+  - npm test
