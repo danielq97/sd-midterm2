@@ -36,6 +36,7 @@ describe('Api Tests for Users endpoints', () => {
         agent.post('http://localhost:4000/users').send(requestBody).then().catch(
             (response)=> {
                 expect(response.status).to.equal(statusCode.BAD_REQUEST);
+                expect(response.response.text).to.equal('A user has been created with that number');
             });
   
        
