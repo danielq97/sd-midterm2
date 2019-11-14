@@ -54,7 +54,7 @@ app.get("*", (req, res) => res.redirect("/"));
 
 app.listen(4000, function () {
     console.log('Server is running.. on Port 4000');     
-    MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-nkmvd.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true},(error, client) => {
+    MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-ayp0h.mongodb.net/test?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true},(error, client) => {
         if(error) {
             throw error;
         }
