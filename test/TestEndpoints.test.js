@@ -1,10 +1,6 @@
 const agent = require('superagent');
 const statusCode = require('http-status-codes');
 const chai = require('chai');
-//const chaiHttp = require('chai-http');
-//var should = chai.should();
-//chai.use(chaiHttp);
-//let server = require('../index')
 
 const { expect } = chai;
 
