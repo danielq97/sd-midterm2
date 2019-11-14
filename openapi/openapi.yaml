@@ -13,52 +13,64 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                idnumber:
-                  type: integer
-                name:
-                  type: string
-                lastname:
-                  type: string
+              $ref: "#/components/schemas/UserRequest"
             examples:
               '0':
                 value: "{\n\t\"name\": \"Sandra\",\n\t\"lastname\": \"Nino\",\n\t\"idnumber\": 1143874329\n}"
-              '1':
-                value: "{\n\t\"name\": \"Sandra\",\n\t\"lastname\": \"Nino\",\n\t\"idnumber\": 1143874328\n}"
       responses:
         '201':
           description: User succesfully created
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      idnumber: 
-                        type: integer
-                      name:
-                        type: string
-                      lastname:
-                        type: string
-                      _id:
-                        type: string
+                $ref: "#/components/schemas/Response"
               examples:
                 '0':
-                  value: "{\n\t\"message\": \"A new user has been created\",\n\t\"user\": [{\n\t\t\"name\": \"Sandra\",\n\t\t\"lastname\": \"Nino\",\n\t\t\"idnumber\": 1143874328, \n\t\t\"_id\": \"5dc9fd0257e5234a10c68edc\"\n\t\t}\n}"
+                  value: "{\n\t\"message\": \"A new user has been created\",\n\t\"user\": {\n\t\t\"name\": \"Sandra\",\n\t\t\"lastname\": \"Nino\",\n\t\t\"idnumber\": 1143874328, \n\t\t\"_id\": \"5dc9fd0257e5234a10c68edc\"\n\t\t}\n}"
         '400':
           description: Error:Trying to create a user with an existing idnumber
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: "#/components/schemas/Error"
               examples:
                 '0':
                   value: "{\n\t\"message\": \"A user has been created with that number\"\n}"
+components:
+  schemas:
+    UserRequest:
+      type: object
+      properties:
+        idnumber: 
+          type: integer
+        name:
+          type: string
+        lastname:
+          type: string
+    User:
+      type: object
+      properties:
+        idnumber: 
+          type: integer
+        name:
+          type: string
+        lastname:
+          type: string
+        _id:
+          type: string
+    Response:
+      type: object
+      properties:
+        message:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
