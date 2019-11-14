@@ -4,14 +4,23 @@ const chai = require('chai');
 
 const { expect } = chai;
 
+const requestBody = {
+  name: "Sandra",
+  lastname: "Nino",
+  idnumber: 1143874327
+};
+
 describe('Api Tests for Users endpoints', () => {
+//Primera prueba de GET users, dónde se verifica que no se haya insertado ningún usuario
+  it('GET users without any user created', async () =>{
+    const response = await agent.get('http://localhost:4000/users');
+    expect(response.status).to.equal(200);
+    expect(response.body.message).to.eql('La lista de usuarios aún está vacía');      
+
+  });
 
     it('POST service', async () => {
-      const requestBody = {
-        name: "Sandra",
-        lastname: "Nino",
-        idnumber: 1143874327
-      };
+     
   
       const response = await agent.post('http://localhost:4000/users').send(requestBody);
   
@@ -37,10 +46,21 @@ describe('Api Tests for Users endpoints', () => {
   
        
     });
-      it('GET service', async () =>{
+      //Prueba de Obtener el usuario insertado      
+      it('GET all users', async () =>{
       const response = await agent.get('http://localhost:4000/users');
       expect(response.status).to.equal(200);
-      expect(response.body.message).to.eql('A list of all users');
+      expect(response.body.message).to.eql('A list of all users');    
+      expect(response.body.users[0].name).to.eql(requestBody.name);
+      expect(response.body.users[0].lastname).to.eql(requestBody.lastname);      
+      expect(response.body.users[0].idnumber).to.eql(requestBody.idnumber);
+
+    });
+     
+    it('GET with a not existent route', async () =>{
+      const response = await agent.get('http://localhost:4000/usersss');      
+      expect(response.status).to.equal(200);      
+      expect(response.body.message).to.eql('Welcome to our app :)');
 
     });
 });
