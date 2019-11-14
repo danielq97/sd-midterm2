@@ -37,4 +37,10 @@ describe('Api Tests for Users endpoints', () => {
   
        
     });
+      it('GET service', async () =>{
+      const response = await agent.get('http://localhost:4000/users');
+      expect(response.status).to.equal(200);
+      expect(response.body.message).to.eql('A list of all users');
+
+    });
 });
