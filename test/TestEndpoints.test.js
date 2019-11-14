@@ -21,9 +21,9 @@ describe('Api Tests for Users endpoints', () => {
   
       expect(response.status).to.equal(statusCode.CREATED);
       expect(response.body.message).to.eql('A new user has been created');
-      expect(response.body.user[0].name).to.eql(requestBody.name);
-      expect(response.body.user[0].lastname).to.eql(requestBody.lastname);
-      expect(response.body.user[0].idnumber).to.eql(requestBody.idnumber);
+      expect(response.body.user.name).to.eql(requestBody.name);
+      expect(response.body.user.lastname).to.eql(requestBody.lastname);
+      expect(response.body.user.idnumber).to.eql(requestBody.idnumber);
     });
 
     it('POST service with a user already created', async () => {
@@ -36,7 +36,7 @@ describe('Api Tests for Users endpoints', () => {
         agent.post('http://localhost:4000/users').send(requestBody).then().catch(
             (response)=> {
                 expect(response.status).to.equal(statusCode.BAD_REQUEST);
-                expect(response.response.text).to.equal('A user has been created with that number');
+                expect(response.response.body.message).to.equal('A user has been created with that number');
             });
   
        

@@ -30,7 +30,7 @@ app.post('/users', (req,res) =>{
                     return res.status(500).send(error);
                 }
                 res.status(201)
-                res.json({message:'A new user has been created', user: result.ops});
+                res.json({message:'A new user has been created', user: result.ops[0]});
             });
         }
     });
