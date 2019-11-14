@@ -50,7 +50,7 @@ app.get('/users', (req,res) =>{
     });
 });
 //Cualquier get que se le haga a una ruta que no exista va a devolver un 200 y va a redirigir a la pagina principal
-//..
+//...
 app.get("*", (req, res) => res.redirect("/"));
 
 app.listen(4000, function () {
